@@ -11,6 +11,6 @@ class Ship_2(Enemy):
         self.image = ENEMY_2
         self.image = pygame.transform.scale(self.image, (self.WIDTH, self.HEIGHT))
         super().__init__(self.image)
-        SPEED_X = 3
-        SPEED_Y = 1
-        INTERVAL = 50
+        self.SPEED_X = 3
+        self.SPEED_Y = 5
+        self.INTERVAL = 50
