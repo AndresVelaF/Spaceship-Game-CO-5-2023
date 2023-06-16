@@ -5,6 +5,8 @@ from game.utils.constants import SPACESHIP, SCREEN_WIDTH, SCREEN_HEIGHT, BULLET_
 class Spaceship:
     X_POS = (SCREEN_WIDTH // 2) - 40
     Y_POS = 500
+    SHOOTING_TIME = 6
+
 
     def __init__(self):
         self.image = SPACESHIP
@@ -13,8 +15,12 @@ class Spaceship:
         self.rect.x = self.X_POS
         self.rect.y = self.Y_POS
         self.is_alive = True
+        self.shooting_time = 0
 
-    def update(self, user_input, bullet_handler):    
+        
+
+    def update(self, user_input, bullet_handler):   
+        self.shooting_time += 1 
         if user_input[pygame.K_LEFT]:
             self.move_left()
         if user_input[pygame.K_RIGHT]:
@@ -23,7 +29,7 @@ class Spaceship:
             self.move_up()
         if user_input[pygame.K_DOWN]:
             self.move_down()
-        if user_input[pygame.K_SPACE]:
+        if user_input[pygame.K_SPACE] and (self.shooting_time % self.SHOOTING_TIME == 0):
             self.shoot(bullet_handler)
 
 
@@ -58,8 +64,4 @@ class Spaceship:
         self.rect.x = self.X_POS
         self.rect.y = self.Y_POS
         self.is_alive = True
-        self.can_shoot = True
         self.shooting_time = 0
-        self.explosion_sprite = 0
-        self.can_explode = False
-        self.can_move = True
