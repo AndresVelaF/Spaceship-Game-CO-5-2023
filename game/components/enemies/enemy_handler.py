@@ -1,5 +1,5 @@
 from game.components.enemies.ship import Ship
-from game.components.enemies.ship_2 import Ship_2
+from game.components.enemies.blue_ship import BlueShip
 
 class EnemyHandler:
     def __init__(self):
@@ -19,7 +19,7 @@ class EnemyHandler:
     def add_enemy(self):
         if len(self.enemies) < 2:
             self.enemies.append(Ship())
-            self.enemies.append(Ship_2())
+            self.enemies.append(BlueShip())
 
     def remove_enemy(self, enemy):
         self.enemies.remove(enemy)
