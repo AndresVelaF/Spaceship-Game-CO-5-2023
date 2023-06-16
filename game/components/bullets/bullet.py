@@ -7,7 +7,7 @@ class Bullet:
         self.rect.center = center
         self.is_active = True
 
-    def update(self,object):
+    def update(self, object):
         if self.rect.colliderect(object.rect):
             object.is_alive = False
             self.is_active = False
