@@ -7,28 +7,34 @@ from game.utils.constants import SPACESHIP_SHIELD
 class PowerHandler:
     def __init__(self):
         self.powers = []
-        self.when_appears = random.randint(3000, 7000)
-        self.duration = random.randint(3, 5)
+        self.when_appers = random.randint(3000,7000)
+        self.duration = random.randint(5,15)
+
 
     def generate_power(self):
         power = Shield()
         self.powers.append(power)
-        self.when_appears += random.randint(3000, 7000)
+        self.when_appers += random.randint(3000,7000)
 
-    def update(self, player):
-        cuerrent_time = pygame.time.get_ticks()
-        if len(self.powers) == 0 or cuerrent_time >= self.when_appears:
+
+    def update(self,player):
+        current_tipe = pygame.time.get_ticks()
+        if len(self.powers) == 0 and current_tipe >= self.when_appers:
             self.generate_power()
+        self.power_use(player)
+        
+    
+    def draw(self,screen):
+        for power in self.powers:
+            power.draw(screen)
+
+    
+    def power_use(self,player):
         for power in self.powers:
             power.update()
             if player.rect.colliderect(power.rect):
-                power.start_time = pygame.time.get_ticks()
-                player.power_type = power.type
+                power.star_time = pygame.time.get_ticks()
+                player.power_type = power.type  
                 player.has_power = True
-                player.powe_time = power.start_time + (self.duration * 1000)
+                player.power_time = power.star_time + (self.duration * 1000)
                 player.set_power_image(SPACESHIP_SHIELD)
-
-
-    def draw(self, screen):
-        for power in self.powers:
-            power.draw(screen)

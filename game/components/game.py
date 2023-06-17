@@ -89,7 +89,9 @@ class Game:
 
     def draw_menu(self):
         if self.number_death == 0:
+            textr, text_rectr = text_utils.get_message("Welcome to Spaceship", 30, WHITE_COLOR,height= SCREEN_HEIGHT//2 - 50)
             text, text_rect = text_utils.get_message("Press any Key to Start", 30, WHITE_COLOR)
+            self.screen.blit(textr, text_rectr)
             self.screen.blit(text, text_rect)
         else:
             if self.max_score < self.score:
@@ -109,10 +111,10 @@ class Game:
 
     def draw_power_time(self):
         if self.player.has_power:
-            power_time = round((self.player.power_time == pygame.time.get_ticks())/1000, 1)
-            if power_time >=0:
-                text, text_rect = text_utils.get_message(f"{self.player.power_type.capitalize()} is enabled for {power_time}", 20, WHITE_COLOR, 150, 50)
-                self.screen.blit(text, text_rect)
+            power_time = round((self.player.power_time - pygame.time.get_ticks())/1000,1)
+            if power_time >= 0:
+                text,text_rect = text_utils.get_message(f"{self.player.power_type.capitalize()} is enable for : {power_time} ", 15, WHITE_COLOR, 150, 50)
+                self.screen.blit(text,text_rect)
             else:
                 self.player.has_power = False
                 self.player.power_type = DEFAULT_TYPE
