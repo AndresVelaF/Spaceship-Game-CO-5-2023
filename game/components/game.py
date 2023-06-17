@@ -1,9 +1,10 @@
 import pygame
 
-from game.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, WHITE_COLOR ,BLUE_COLOR
+from game.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, WHITE_COLOR ,BLUE_COLOR, DEFAULT_TYPE
 from game.components.spaceship import Spaceship
 from game.components.enemies.enemy_handler import EnemyHandler
 from game.components.bullets.bullet_handler import BulletHandler
+from game.components.powers.power_handler import PowerHandler
 from game.components import text_utils
 
 class Game:
@@ -21,6 +22,7 @@ class Game:
         self.player = Spaceship()
         self.enemy_handler = EnemyHandler()
         self.bullet_handler = BulletHandler()
+        self.PowerHandler = PowerHandler()
         self.score = 0
         self.number_death = 0
         self.max_score = 0
@@ -52,6 +54,7 @@ class Game:
             self.enemy_handler.update(self.bullet_handler)
             self.bullet_handler.update(self.player,self.enemy_handler.enemies)
             self.score = self.enemy_handler.number_enemy_destroyed
+            self.PowerHandler.update(self.player)
             if not self.player.is_alive:
                 pygame.time.delay(500)
                 self.playing = False
@@ -66,7 +69,9 @@ class Game:
             self.player.draw(self.screen)
             self.enemy_handler.draw(self.screen)
             self.bullet_handler.draw(self.screen)
+            self.PowerHandler.draw(self.screen)
             self.draw_score()
+            self.draw_power_time()
         else:
             self.draw_menu()
         pygame.display.update()
@@ -101,6 +106,18 @@ class Game:
     def draw_score(self):
         score, score_rect = text_utils.get_message(f'Your score is {self.score}', 20, WHITE_COLOR, 1000, 40)
         self.screen.blit(score, score_rect)
+
+    def draw_power_time(self):
+        if self.player.has_power:
+            power_time = round((self.player.power_time == pygame.time.get_ticks())/1000, 1)
+            if power_time >=0:
+                text, text_rect = text_utils.get_message(f"{self.player.power_type.capitalize()} is enabled for {power_time}", 20, WHITE_COLOR, 150, 50)
+                self.screen.blit(text, text_rect)
+            else:
+                self.player.has_power = False
+                self.player.power_type = DEFAULT_TYPE
+                self.player.set_default_image()
+
 
     def reset(self):
         self.player.reset()

@@ -1,3 +1,5 @@
+
+from game.utils.constants import SHIELD_TYPE
 class Bullet:
 
     def __init__(self,image,type, center):
@@ -9,8 +11,9 @@ class Bullet:
 
     def update(self, object):
         if self.rect.colliderect(object.rect):
-            object.is_alive = False
-            self.is_active = False
+                object.is_alive = False
+                self.is_active = False
+                
 
     
     def draw(self,screen):

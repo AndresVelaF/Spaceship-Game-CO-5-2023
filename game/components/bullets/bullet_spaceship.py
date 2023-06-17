@@ -18,7 +18,7 @@ class BulletPlayer(Bullet):
         if self.rect.y <= 0:
             self.is_active = False
         super().update(enemy)
-        if not self.is_active:
+        if not enemy.is_alive:
             enemy.is_destroyed = True
 
     
