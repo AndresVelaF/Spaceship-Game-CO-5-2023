@@ -1,6 +1,6 @@
 import pygame
 
-from game.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, WHITE_COLOR ,BLUE_COLOR, DEFAULT_TYPE
+from game.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, WHITE_COLOR ,BLUE_COLOR, DEFAULT_TYPE, FONT_IMPACT
 from game.components.spaceship import Spaceship
 from game.components.enemies.enemy_handler import EnemyHandler
 from game.components.bullets.bullet_handler import BulletHandler
@@ -89,7 +89,7 @@ class Game:
 
     def draw_menu(self):
         if self.number_death == 0:
-            textr, text_rectr = text_utils.get_message("Welcome to Spaceship", 30, WHITE_COLOR,height= SCREEN_HEIGHT//2 - 50)
+            textr, text_rectr = text_utils.get_message("Welcome to Spaceship", 40, WHITE_COLOR,height= SCREEN_HEIGHT//2 - 50,FONT_TYPE=FONT_IMPACT)
             text, text_rect = text_utils.get_message("Press any Key to Start", 30, WHITE_COLOR)
             self.screen.blit(textr, text_rectr)
             self.screen.blit(text, text_rect)
@@ -125,3 +125,4 @@ class Game:
         self.player.reset()
         self.enemy_handler.reset()
         self.bullet_handler.reset()
+        self.PowerHandler.reset()

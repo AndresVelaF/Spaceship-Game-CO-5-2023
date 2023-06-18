@@ -1,25 +1,27 @@
 import pygame
 import random
 from game.components.powers.shield import Shield
-from game.utils.constants import SPACESHIP_SHIELD
+from game.components.powers.gun import Gun
+from game.utils.constants import SPACESHIP_SHIELD ,GUN_TYPE , SHIELD_TYPE, SCREEN_HEIGHT
+from game.components.powers.power import Power
 
 
 class PowerHandler:
     def __init__(self):
         self.powers = []
-        self.when_appers = random.randint(3000,7000)
+        self.when_appers = random.randint(4000,7000)
         self.duration = random.randint(5,15)
 
 
     def generate_power(self):
-        power = Shield()
-        self.powers.append(power)
-        self.when_appers += random.randint(3000,7000)
+        self.powers.append(Shield())
+        self.powers.append(Gun())
+        self.when_appers += random.randint(4000,7000)
 
 
     def update(self,player):
         current_tipe = pygame.time.get_ticks()
-        if len(self.powers) == 0 and current_tipe >= self.when_appers:
+        if len(self.powers) == 0 or current_tipe >= self.when_appers:
             self.generate_power()
         self.power_use(player)
         
@@ -37,4 +39,10 @@ class PowerHandler:
                 player.power_type = power.type  
                 player.has_power = True
                 player.power_time = power.star_time + (self.duration * 1000)
-                player.set_power_image(SPACESHIP_SHIELD)
+                if power.type == GUN_TYPE:
+                    player.SHOOTING_TIME = 1
+                elif power.type == SHIELD_TYPE:
+                    player.set_power_image(SPACESHIP_SHIELD)
+                    
+    def reset(self):
+        self.powers = []

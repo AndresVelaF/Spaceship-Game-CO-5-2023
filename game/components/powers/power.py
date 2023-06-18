@@ -1,6 +1,6 @@
 import pygame
 import random
-from game.utils.constants import SCREEN_WIDTH
+from game.utils.constants import SCREEN_WIDTH, SCREEN_HEIGHT
 
 class Power:
     POWER_WIDTH = 30
@@ -21,3 +21,6 @@ class Power:
     def draw(self, screen) :
         screen.blit(self.image, self.rect)
             
+    def remove_power(self):
+        if self.powers.rect >= SCREEN_HEIGHT:
+            self.powers.remove(self.image)

@@ -76,3 +76,4 @@ class Spaceship:
     def set_default_image(self):
         self.image = SPACESHIP
         self.image = pygame.transform.scale(self.image, (40, 60))
+        self.SHOOTING_TIME = 6

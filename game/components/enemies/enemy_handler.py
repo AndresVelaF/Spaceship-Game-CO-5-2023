@@ -9,7 +9,7 @@ class EnemyHandler:
     def update(self, bullet_handler):
         self.add_enemy()
         for enemy in self.enemies:
-            enemy.update(bullet_handler)#parte por areglar
+            enemy.update(bullet_handler)
             if  enemy.is_destroyed:
                 self.number_enemy_destroyed += 1
             if not enemy.is_alive:
@@ -20,7 +20,7 @@ class EnemyHandler:
             enemy.draw(screen)
 
     def add_enemy(self):
-        if len(self.enemies) < 2:
+        if len(self.enemies) < 3:
             self.enemies.append(Ship())
             self.enemies.append(BlueShip())
 
