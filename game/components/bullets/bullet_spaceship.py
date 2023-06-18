@@ -12,6 +12,9 @@ class BulletPlayer(Bullet):
         self.image = pygame.transform.scale(self.image, (self.WIDTH, self.HEIGTH))
         self.type = BULLET_PLAYER_TYPE
         super().__init__(self.image,self.type, center)
+        self.sonido = pygame.mixer.Sound("game/assets/Music/shoot.wav")
+        self.sonido.play()
+        self.sonido.set_volume(0.1)
 
     def update(self,enemy):
         self.rect.y -= self.SPEED

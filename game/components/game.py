@@ -26,6 +26,9 @@ class Game:
         self.score = 0
         self.number_death = 0
         self.max_score = 0
+        pygame.mixer.music.load("game/assets/Music/space.wav")
+        pygame.mixer.music.play(-1)
+        pygame.mixer.music.set_volume(0.2)
 
 
     def run(self):
@@ -55,6 +58,7 @@ class Game:
             self.bullet_handler.update(self.player,self.enemy_handler.enemies)
             self.score = self.enemy_handler.number_enemy_destroyed
             self.PowerHandler.update(self.player)
+            
             if not self.player.is_alive:
                 pygame.time.delay(500)
                 self.playing = False
