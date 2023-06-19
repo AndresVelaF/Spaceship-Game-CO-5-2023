@@ -61,3 +61,10 @@
 <p align="center">
   <strong>Originally in the game the player only had one life and if he was shot dead, a death counter was added for the player and the lives he has are printed on the screen in the form of a heart.</strong>
 </p>
+
+
+## Author
+
+<p align="center">
+  <strong>Andres Felipe Vela Florez</strong>
+</p>
