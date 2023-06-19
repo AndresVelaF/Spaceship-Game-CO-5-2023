@@ -52,3 +52,12 @@
   <strong>The game in its original version has as a way to start "press Any Key to star" this way of starting is eliminated and the play button is implemented. This works with an image and it is checked when the position of the mouse is on the image and when click when the conditions are met the game starts.</strong>
 </p>
 
+### ADD LIFE COUNTER
+
+<p align="center">
+  <img src="game/assets/Other/Heart.png" />
+</p>
+
+<p align="center">
+  <strong>Originally in the game the player only had one life and if he was shot dead, a death counter was added for the player and the lives he has are printed on the screen in the form of a heart.</strong>
+</p>
