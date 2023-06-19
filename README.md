@@ -43,7 +43,7 @@
   <strong>A way to change the font type to the desired font is implemented as long as we have it inside the game files, with this implementation the game title "Welcome to Spaceship" is created.</strong>
 </p>
 
-## ADD BUTTON PLAY
+### ADD BUTTON PLAY
 
 <p align="center">
   <img src="game/assets/Other/playGrande.png" />
