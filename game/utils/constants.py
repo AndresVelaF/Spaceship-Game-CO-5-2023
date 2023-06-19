@@ -24,6 +24,8 @@ DEFAULT_TYPE = "default"
 SHIELD_TYPE = 'shield'
 GUN_TYPE = 'gun'
 
+BUTTON_PLAY = pygame.image.load(os.path.join(IMG_DIR, "Other/playGrande.png"))
+
 SPACESHIP = pygame.image.load(os.path.join(IMG_DIR, "Spaceship/spaceship.png"))
 SPACESHIP_SHIELD = pygame.image.load(os.path.join(IMG_DIR, "Spaceship/spaceship_shield.png"))
 BULLET = pygame.image.load(os.path.join(IMG_DIR, "Bullet/bullet_1.png"))
@@ -42,3 +44,5 @@ BLUE_COLOR = (0, 0, 255)
 
 BULLET_ENEMY_TYPE = "enemy"
 BULLET_PLAYER_TYPE = "player"
+
+GET_POWER_SOUND = "game/assets/Music/super-mario-coin-sound.wav"
