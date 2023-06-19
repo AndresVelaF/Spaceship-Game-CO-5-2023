@@ -95,7 +95,7 @@ class Game:
     def draw_menu(self):
         if self.number_death == 0:
             textr, text_rectr = text_utils.get_message("Welcome to Spaceship", 60, WHITE_COLOR,height= SCREEN_HEIGHT//2 - 100,FONT_TYPE=FONT_IMPACT)
-            play,play_rect = text_utils.get_image(BUTTON_PLAY)
+            play,play_rect = text_utils.get_play(BUTTON_PLAY)
             self.screen.blit(play,play_rect)
             self.play_button = play_rect
             self.screen.blit(textr, text_rectr)
