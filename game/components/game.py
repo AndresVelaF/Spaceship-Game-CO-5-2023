@@ -1,6 +1,6 @@
 import pygame
 
-from game.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, WHITE_COLOR ,BLUE_COLOR, DEFAULT_TYPE, FONT_IMPACT, BUTTON_PLAY
+from game.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, WHITE_COLOR ,BLUE_COLOR, DEFAULT_TYPE, FONT_IMPACT, BUTTON_PLAY,HEART_LIVE
 from game.components.spaceship import Spaceship
 from game.components.enemies.enemy_handler import EnemyHandler
 from game.components.bullets.bullet_handler import BulletHandler
@@ -76,6 +76,7 @@ class Game:
             self.PowerHandler.draw(self.screen)
             self.draw_score()
             self.draw_power_time()
+            self.draw_live()
         else:
             self.draw_menu()
         pygame.display.update()
@@ -118,6 +119,16 @@ class Game:
     def draw_score(self):
         score, score_rect = text_utils.get_message(f'Your score is {self.score}', 20, WHITE_COLOR, 1000, 40)
         self.screen.blit(score, score_rect)
+
+    def draw_live(self):
+        if self.player.live == 2:
+            heart,heart_rect = text_utils.print_image(HEART_LIVE,50,50, width =10,height =15)
+            heart2,heart2_rect = text_utils.print_image(HEART_LIVE,50,50, width =30,height =15)
+            self.screen.blit(heart,heart_rect)
+            self.screen.blit(heart2,heart2_rect)
+        elif self.player.live == 1:
+            heart,heart_rect = text_utils.print_image(HEART_LIVE,50,50, width =10,height =15)
+            self.screen.blit(heart,heart_rect)
 
     def draw_power_time(self):
         if self.player.has_power:

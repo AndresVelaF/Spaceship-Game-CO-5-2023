@@ -19,6 +19,7 @@ class Spaceship:
         self.power_type = DEFAULT_TYPE
         self.has_power = False
         self.power_time = 0
+        self.live = 2
 
         
 
@@ -62,13 +63,6 @@ class Spaceship:
     def shoot(self, bullet_handler):
             bullet_handler.add_bullet(BULLET_PLAYER_TYPE, self.rect.center)
 
-    def reset(self):
-        self.image = pygame.transform.scale(SPACESHIP, ((40, 60)))
-        self.rect.x = self.X_POS
-        self.rect.y = self.Y_POS
-        self.is_alive = True
-        self.shooting_time = 0
-
     def set_power_image(self, image):
         self.image = image
         self.image = pygame.transform.scale(self.image, (40, 60))
@@ -77,3 +71,11 @@ class Spaceship:
         self.image = SPACESHIP
         self.image = pygame.transform.scale(self.image, (40, 60))
         self.SHOOTING_TIME = 6
+    
+    def reset(self):
+        self.image = pygame.transform.scale(SPACESHIP, ((40, 60)))
+        self.rect.x = self.X_POS
+        self.rect.y = self.Y_POS
+        self.is_alive = True
+        self.shooting_time = 0
+        self.live = 2

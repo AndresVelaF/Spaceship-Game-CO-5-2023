@@ -16,3 +16,12 @@ def get_image(image, width = SCREEN_WIDTH //2 , height = SCREEN_HEIGHT // 2):
     rect = image.get_rect()
     rect.center = (width,height)
     return image, rect
+
+def print_image(image, image_x, image_y, width = SCREEN_WIDTH //2 , height = SCREEN_HEIGHT // 2 ):
+    image = image
+    image_x = image_x
+    image_y = image_y
+    image  = pygame.transform.scale(image, (image_x,image_y))
+    rect = image.get_rect()
+    rect.center = (width,height)
+    return image, rect

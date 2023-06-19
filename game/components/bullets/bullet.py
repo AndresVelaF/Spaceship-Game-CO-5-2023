@@ -11,8 +11,10 @@ class Bullet:
 
     def update(self, object):
         if self.rect.colliderect(object.rect):
+            object.live -= 1
+            if object.live <= 0:    
                 object.is_alive = False
-                self.is_active = False
+            self.is_active = False
                 
 
     
