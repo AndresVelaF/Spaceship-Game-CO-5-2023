@@ -50,6 +50,9 @@ class Game:
             elif event.type == pygame.MOUSEBUTTONDOWN and not self.playing:
                 mousepos = pygame.mouse.get_pos()
                 self.button_pos(mousepos)
+            elif event.type == pygame.KEYDOWN and self.number_death > 0 and not self.playing:
+                self.playing = True
+                self.reset()
 
     def update(self):
         if self.playing:
