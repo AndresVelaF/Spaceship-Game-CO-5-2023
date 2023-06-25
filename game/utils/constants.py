@@ -13,7 +13,7 @@ IMG_DIR = os.path.join(os.path.dirname(__file__), "..", "assets")
 # Assets Constants
 ICON = pygame.image.load(os.path.join(IMG_DIR, "Spaceship/spaceship.png"))
 
-SHIELD = pygame.image.load(os.path.join(IMG_DIR, 'Other/shield.png'))
+SHIELD = pygame.image.load(os.path.join(IMG_DIR, 'Other/shield_rm.png'))
 HEAVY_MACHINE_GUN = pygame.image.load(os.path.join(IMG_DIR, 'Other/powerH.png'))
 
 BG = pygame.image.load(os.path.join(IMG_DIR, 'Other/Track.png'))
